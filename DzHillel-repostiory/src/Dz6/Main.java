@@ -1,5 +1,7 @@
-import java.util.Random;
-import java.util.Scanner;
+package Dz6;
+
+import javax.print.DocFlavor;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,7 +9,8 @@ public class Main {
         System.out.println(findWordPosition("Matvey", "vey"));
         System.out.println(stringReverse("Matvey"));
         System.out.println(isPalindrome("мадам"));
-        game();
+        // game();
+        gameOne();
     }
 
     public static int findSymbolOccurance(String string, char value) {
@@ -40,7 +43,7 @@ public class Main {
     }
 
     public static void game() {
-        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado" , "broccoli",
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
                 "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
                 "nut", "olive", " pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
         Scanner scr = new Scanner(System.in);
@@ -73,4 +76,39 @@ public class Main {
             }
         }
     }
+
+    public static void gameOne() {
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
+                "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
+                "nut", "olive", " pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+        Scanner scr = new Scanner(System.in);
+        Random random = new Random();
+        String resultString = words[random.nextInt(words.length - 1)];
+        char[] inputChars = new char[resultString.length()];
+        String input;
+        final int COUNT_ITER = 15;
+
+        System.out.println(resultString);
+
+        while (true) {
+            System.out.println("Enter a word: ");
+            input = scr.nextLine();
+            if (input.equals(resultString)) {
+                System.out.println("WIN");
+                break;
+            } else {
+                for (int i = 0; i < input.length(); i++) {
+                    int i1 = resultString.indexOf(input.charAt(i));
+                    if (i1 != -1) {
+                        inputChars[i1] = input.charAt(i);
+                    }
+                }
+            }
+            for (char c : inputChars) {
+                System.out.print(c);
+            }
+            System.out.print("#".repeat(COUNT_ITER - inputChars.length) + "\n");
+        }
+    }
+
 }
