@@ -1,0 +1,7 @@
+FILE:. /package
+
+LEVEL: INFO
+
+MAX-SIZE: 10_000
+
+FORMAT: .txt
