@@ -13,18 +13,24 @@ public class FileLogger {
         this.configuration = configuration;
     }
 
-    public void info(String massage) throws FileMaxSizeReachedException {
+    public void info(String massage) throws Exception {
+        if (configuration.getLoggingLevel() != LoggingLevel.INFO) {
+            throw new Exception("Logging level is not INFO.");
+        }
         log(massage, configuration.getLoggingLevel());
     }
 
-    public void debug(String massage) throws FileMaxSizeReachedException {
+    public void debug(String massage) throws Exception {
+        if (configuration.getLoggingLevel() != LoggingLevel.DEBUG) {
+            throw new Exception("Logging level is not DEBUG.");
+        }
         log(massage, configuration.getLoggingLevel());
     }
 
     private void log(String message, LoggingLevel loggingLevel) throws FileMaxSizeReachedException {
         long totalSize = configuration.getFilePath().length() + message.getBytes().length;
 
-        if (totalSize > configuration.getMAXSIZE()) {
+        if (totalSize > configuration.getMaxSize()) {
             throw new FileMaxSizeReachedException("File + message is too big size: " + totalSize + "byte.");
         }
 
@@ -36,7 +42,7 @@ public class FileLogger {
                 file = new File(configuration.getFilePath().getName()
                         + File.separator + logMessage + configuration.getFormat());
             } else {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");;
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 message = formatter + "\n" + message;
                 file = new File(configuration.getFilePath().getName()
                         + File.separator + logMessage + configuration.getFormat());

@@ -10,7 +10,7 @@ public class Main {
                 load(new File("./settingFileConfig.txt"));
         FileLogger fileLogger = new FileLogger(fileLoggerConfiguration);
 
+        fileLogger.debug("I love you!");
         fileLogger.info("I love you!");
-
     }
 }

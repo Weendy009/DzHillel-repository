@@ -5,13 +5,14 @@ import java.io.File;
 public class FileLoggerConfiguration {
     private File filePath;
     private LoggingLevel loggingLevel;
-    private final long MAXSIZE = 100_000;
+    private long maxSize = 100_000;
     private String format;
 
-    public FileLoggerConfiguration(File filePath, LoggingLevel loggingLevel) {
+    public FileLoggerConfiguration(File filePath, LoggingLevel loggingLevel, long maxSize, String format) {
         this.filePath = filePath;
         this.loggingLevel = loggingLevel;
-        this.format = ".txt";
+        this.maxSize = maxSize;
+        this.format = format;
     }
 
     public FileLoggerConfiguration(File filePath, LoggingLevel loggingLevel, String format) {
@@ -28,8 +29,8 @@ public class FileLoggerConfiguration {
         return loggingLevel;
     }
 
-    public long getMAXSIZE() {
-        return MAXSIZE;
+    public long getMaxSize() {
+        return maxSize;
     }
 
     public String getFormat() {

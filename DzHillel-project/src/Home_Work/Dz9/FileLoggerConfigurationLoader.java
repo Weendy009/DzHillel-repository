@@ -28,7 +28,9 @@ public class FileLoggerConfigurationLoader {
             e.printStackTrace();
         }
 
-        fileLogger = new FileLoggerConfiguration(new File(config[0]), LoggingLevel.valueOf(config[1]), config[3]);
+        fileLogger = new FileLoggerConfiguration(
+                new File(config[0]), LoggingLevel.valueOf(config[1]), Long.parseLong(config[2]), config[3]
+        );
 
         return fileLogger;
     }
