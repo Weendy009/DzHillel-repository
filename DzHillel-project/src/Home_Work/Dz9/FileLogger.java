@@ -36,7 +36,7 @@ public class FileLogger {
                 file = new File(configuration.getFilePath().getName()
                         + File.separator + logMessage + configuration.getFormat());
             } else {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");;
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 message = formatter + "\n" + message;
                 file = new File(configuration.getFilePath().getName()
                         + File.separator + logMessage + configuration.getFormat());
