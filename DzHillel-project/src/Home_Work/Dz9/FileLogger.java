@@ -38,15 +38,12 @@ public class FileLogger {
             String logMessage = String.format("Log_[%s]%s", getTimestamp(loggingLevel), loggingLevel);
 
             File file;
-            if (loggingLevel == LoggingLevel.INFO) {
-                file = new File(configuration.getFilePath().getName()
-                        + File.separator + logMessage + configuration.getFormat());
-            } else {
+            if (loggingLevel != LoggingLevel.INFO) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 message = formatter + "\n" + message;
-                file = new File(configuration.getFilePath().getName()
-                        + File.separator + logMessage + configuration.getFormat());
             }
+            file = new File(configuration.getFilePath().getName()
+                    + File.separator + logMessage + configuration.getFormat());
 
             if (file.createNewFile()) {
                 System.out.println("Файл создан: " + file.getName());

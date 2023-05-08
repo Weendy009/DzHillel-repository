@@ -7,6 +7,7 @@ import java.io.IOException;
 
 
 public class FileLoggerConfigurationLoader {
+
     public FileLoggerConfiguration load(File file) throws Exception {
         String[] config;
         FileLoggerConfiguration fileLogger;

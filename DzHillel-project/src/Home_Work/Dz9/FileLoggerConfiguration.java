@@ -21,6 +21,7 @@ public class FileLoggerConfiguration {
         this.format = format;
     }
 
+
     public File getFilePath() {
         return filePath;
     }
