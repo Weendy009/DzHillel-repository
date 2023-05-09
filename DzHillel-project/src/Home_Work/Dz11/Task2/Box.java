@@ -7,15 +7,18 @@ import java.util.List;
 
 public class Box<T> {
     private List<T> fruits;
+    private Class<?> fruitType;
     private double weight = 0;
 
-    public Boolean add(T fruit) {
+    public void add(T fruit) {
         if (fruits == null) {
             fruits = new ArrayList<>();
+            fruitType = fruit.getClass();
+        } else if (!fruit.getClass().equals(fruitType)) {
+            throw new IllegalArgumentException("Cannot add fruit of different type to the box");
         }
         weight += ((Fruit) fruit).getWeight();
         fruits.add(fruit);
-        return null;
     }
 
     @SafeVarargs
@@ -25,7 +28,7 @@ public class Box<T> {
         }
     }
 
-    public boolean compare(Box<T> otherBox) {
+    public boolean compare(Box<? extends Fruit> otherBox) {
         return getWeight() == otherBox.getWeight();
     }
 
@@ -45,6 +48,10 @@ public class Box<T> {
 
     public double getWeight() {
         return weight;
+    }
+
+    public Class<?> getFruitType() {
+        return fruitType;
     }
 
 }
