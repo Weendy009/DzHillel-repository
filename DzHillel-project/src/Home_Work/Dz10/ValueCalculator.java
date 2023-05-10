@@ -8,7 +8,7 @@ public class ValueCalculator {
     private int arrayHalfLength;
 
 
-    public long timeStampAlgorithm(long size) {
+    public long timeStampAlgorithm(long size) throws InterruptedException {
         long start = System.currentTimeMillis();
         MyThread threadOne;
         MyThread threadTwo;
@@ -32,8 +32,8 @@ public class ValueCalculator {
 
         threadOne = new MyThread(arrayOne);
         threadTwo = new MyThread(arrayTwo);
-        threadOne.run();
-        threadTwo.run();
+        threadOne.start();
+        threadTwo.start();
 
         arrayOne = threadOne.getArray();
         arrayTwo = threadTwo.getArray();
