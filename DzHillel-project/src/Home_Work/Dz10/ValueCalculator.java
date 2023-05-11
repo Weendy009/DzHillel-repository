@@ -32,8 +32,8 @@ public class ValueCalculator {
 
         threadOne = new MyThread(arrayOne);
         threadTwo = new MyThread(arrayTwo);
-        threadOne.start();
-        threadTwo.start();
+        threadOne.join();
+        threadTwo.join();
 
         arrayOne = threadOne.getArray();
         arrayTwo = threadTwo.getArray();
