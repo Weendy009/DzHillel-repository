@@ -36,6 +36,7 @@ public class ValueCalculator {
         threadTwo.start();
         threadOne.join();
         threadTwo.join();
+        System.out.println("main поток идёт");
 
         arrayOne = threadOne.getArray();
         arrayTwo = threadTwo.getArray();

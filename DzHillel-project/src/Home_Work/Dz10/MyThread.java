@@ -13,6 +13,7 @@ public class MyThread extends Thread {
             double j = (double) i / 5;
             array[i] = (int) (array[i] * Math.sin(0.2f + j) * Math.cos(0.2f + j) * Math.cos(0.4f + (double) i / 2));
         }
+        System.out.println(this.getName() + "выполнен.");
     }
 
     public int[] getArray() {
