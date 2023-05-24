@@ -7,10 +7,11 @@ import java.util.List;
 public class PhoneDirectory {
     private List<Record> records;
 
+    public PhoneDirectory() {
+        records = new ArrayList<>();
+    }
+
     public void add(Record... recordsInput) {
-        if (records == null) {
-            records = new ArrayList<>();
-        }
         records.addAll(Arrays.asList(recordsInput));
     }
 
